@@ -3,7 +3,6 @@
 *.pyc
 results/
 credential.yml
-inventories/local/
 log/*.log
 *.iml
 .python-version
