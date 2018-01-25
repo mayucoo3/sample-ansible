@@ -1,0 +1,17 @@
+- name: download Java RPM
+  shell:
+    "curl -L  -H 'Cookie:oraclelicense=accept-securebackup-cookie' -o /usr/local/src/{{ java_tarball_filename }} {{ java_tarball_url }}"
+  args:
+    creates: "/usr/local/src/{{ java_tarball_filename }}"
+  register: result
+
+- unarchive: src=/usr/local/src/{{ java_tarball_filename }} dest=/usr/local/src/ copy=no
+  when: result | changed
+
+- template: src=java.sh.j2 dest=/etc/profile.d/java.sh
+  when: java_profile_override == 'yes'
+#
+#- name: correct java version selected
+#  alternatives:
+#    name: java
+#    path: /usr/local/src/{{ java_dir }}/bin/java

@@ -1,0 +1,10 @@
+---
+- name: provisioning for sample app
+  hosts: sample
+  gather_facts: yes
+  become: yes
+  roles:
+    - prompt
+    - node
+    - java
+    - nginx

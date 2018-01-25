@@ -1,0 +1,12 @@
+*.swp
+*.bin
+*.pyc
+results/
+credential.yml
+inventories/local/
+log/*.log
+*.iml
+.python-version
+Vagrantfile
+vagrant/
+.vagrant/

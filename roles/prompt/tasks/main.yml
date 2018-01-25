@@ -1,0 +1,9 @@
+---
+- lineinfile: dest=/etc/profile.d/prompt.sh
+              line="export NICKNAME={{ env }}.{{ ec2_tag_Hostname | default(inventory_hostname) }}"
+              state=present
+              create=true
+
+- replace: dest=/etc/bashrc
+           regexp='PS1="\\[\\\u@\\\h \\\W\\]'
+           replace='PS1="[\u@$NICKNAME \W]'
